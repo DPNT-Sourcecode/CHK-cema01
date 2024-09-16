@@ -1,6 +1,13 @@
-from solutions.HLO import checkout_solution
+from solutions.CHK import checkout_solution
 
 
-class TestSum():
-    def test_sum(self):
-        assert sum_solution.compute(1, 2) == 3
+class TestCheckout():
+    def test_checkout(self):
+        assert checkout_solution.checkout("3A") == 130
+        assert checkout_solution.checkout("3A1B") == 160
+        assert checkout_solution.checkout("3A2B") == 175
+        assert checkout_solution.checkout("B") == 30
+        assert checkout_solution.checkout("3A1X") == -1
+        assert checkout_solution.checkout("3AX") == -1
+
+
