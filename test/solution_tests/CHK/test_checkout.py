@@ -7,8 +7,6 @@ class TestCheckout():
         assert checkout_solution.checkout("3A1B") == 160
         assert checkout_solution.checkout("3A2B") == 175
         assert checkout_solution.checkout("B") == 30
-        assert checkout_solution.checkout("3A1X") == -1
-        assert checkout_solution.checkout("3AX") == -1
         assert checkout_solution.checkout("a") == -1
         assert checkout_solution.checkout("-") == -1
 
@@ -33,6 +31,7 @@ class TestCheckout():
         assert checkout_solution.checkout("UUUU") == 120  # 4U for 120 (3U + 1U free)
         assert checkout_solution.checkout("VVV") == 130  # 3V for 130
         assert checkout_solution.checkout("VV") == 90  # 2V for 90
+
 
 
 
