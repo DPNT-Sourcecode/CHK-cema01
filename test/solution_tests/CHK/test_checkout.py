@@ -19,6 +19,15 @@ class TestCheckout():
         assert checkout_solution.checkout("3ABEE") == 210  # 3A for 130, 1B for 45, 2E for 80 (B is free)
         assert checkout_solution.checkout("3A3BEE") == 255  # 3A for 130, 2B for 45, 2E for 80 (B is free)
 
+        assert checkout_solution.checkout("F") == 10
+        assert checkout_solution.checkout("FF") == 20
+        assert checkout_solution.checkout("FFF") == 20 # 3F for 20
+        assert checkout_solution.checkout("FFFF") == 30
+        assert checkout_solution.checkout("FFFFFF") == 40 # 6F for 40
+
+
+
+
 
 
 
