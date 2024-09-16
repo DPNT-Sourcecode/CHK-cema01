@@ -15,8 +15,10 @@ class TestCheckout():
         assert checkout_solution.checkout("EEBB") == 110
         assert checkout_solution.checkout("EEB") == 80
         assert checkout_solution.checkout("EE") == 80
-        assert checkout_solution.checkout("AAAAABEEB") == 295
-        assert checkout_solution.checkout("3A2BEE") == 255  # 3A for 130, 2B for 45, 2E for 80 (B is free)
+        assert checkout_solution.checkout("AAAAABEEB") == 310  # 5A for 200, B for 30, 2E for 80 (B is free)
+        assert checkout_solution.checkout("3ABEE") == 210  # 3A for 130, 1B for 45, 2E for 80 (B is free)
+        assert checkout_solution.checkout("3A3BEE") == 255  # 3A for 130, 2B for 45, 2E for 80 (B is free)
+
 
 
 
