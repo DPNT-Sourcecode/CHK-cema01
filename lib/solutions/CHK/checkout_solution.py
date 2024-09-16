@@ -23,16 +23,16 @@ def checkout(skus: str) -> int:
         'A': [(5, 200), (3, 130)],
         'B': [(2, 45)],
         'H': [(10, 80), (5, 45)],
-        'K': [(2, 150)],
+        'K': [(2, 120)],
         'P': [(5, 200)],
         'Q': [(3, 80)],
-        'V': [(3, 130), (2, 90)]
+        'V': [(3, 130), (2, 90)],
     }
 
     # Free items offer
     free_items = {
-        'E': ('B', 2),  # Buy 2E, get 1B free
-        'F': ('F', 3),  # Buy 2F, get 1F free, must have 3F in the basket
+        'E': ('B', 2),   # Buy 2E, get 1B free
+        'F': ('F', 3),   # Buy 3F, pay for 2F (essentially buy 2, get 1 free)
         'N': ('M', 3),   # Buy 3N, get 1M free
         'R': ('Q', 3),   # Buy 3R, get 1Q free
         'U': ('U', 4)    # Buy 4U, pay for 3U (essentially buy 3, get 1 free)
@@ -118,6 +118,7 @@ def checkout(skus: str) -> int:
     
     return total_price
     
+
 
 
 
