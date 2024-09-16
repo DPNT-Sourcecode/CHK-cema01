@@ -19,8 +19,14 @@ def checkout(skus: str) -> int:
     
     # Special offers
     offers = {
-       'A': (3, 130),
-       'B': (2, 45)
+        'A': [(5, 200), (3, 130)],
+        'B': [(2, 45)],
+        'E': [(2, 40)]
+    }
+
+    # Free items offer
+    free_items = {
+        'E': ('B', 2)  # Buy 2E, get 1B free
     }
 
     # Dictionary to count the occurences of each SKU
@@ -48,6 +54,11 @@ def checkout(skus: str) -> int:
         
         item_count[sku] = item_count.get(sku, 0) + quantity
     
+    # Apply offers that give free items
+    for sku, (free_sku, required_quantity) in free_items.items():
+        if sku in item_count and free_sku in item_count:
+            free_count = item_count[sku] // required_quantity
+            item_count[free_sku] = max(0, item_count[free_sku] - free_count)
     # Calculate total price
     total_price = 0
     for item, count in item_count.items():
@@ -60,3 +71,4 @@ def checkout(skus: str) -> int:
     
     return total_price
     
+
