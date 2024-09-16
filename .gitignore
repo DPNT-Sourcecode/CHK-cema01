@@ -1,0 +1,52 @@
+# ~~~~~~~~~ Global ~~~~~~~~~
+
+# Ignore all dot folders
+.*/
+
+# ~~~~~~~~~ Language specific ~~~~~~~~~
+
+# Optimised files
+__pycache__/
+*.so
+*.py[cod]
+*$py.class
+
+# Packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+python-wheels/
+*.egg-info/
+*.egg
+MANIFEST
+
+# Virtualenv stuff
+env/
+venv/
+pyvenv/
+ENV/
+
+# Unit testing
+coverage.xml
+
+# ~~~~~~~~~ IDE specific ~~~~~~~~~
+
+# Idea
+*.iml
+
+# ~~~~~~~~~ Accelerate ~~~~~~~~~
+challenges/
+config/
+coverage/
+coverage.tdl
+.coverage
+jre/
+record/
+
