@@ -101,7 +101,7 @@ def checkout(skus: str) -> int:
     
     # Calculate total price
     for item, count in item_count.items():
-        print(f"item is: {item} and count is: {count}")
+        print(f"total price is: {total_price}, item is: {item} and count is: {count}")
         if item in offers:
             # Apply special offers for the item
             item_offers = sorted(offers[item], key=lambda x: -x[0])  # Sort offers by quantity descending
@@ -117,5 +117,6 @@ def checkout(skus: str) -> int:
     
     return total_price
     
+
 
 
