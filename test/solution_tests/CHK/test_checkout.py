@@ -51,6 +51,3 @@ class TestCheckout():
         assert checkout_solution.checkout("SSSZ") == 65  # 4U for 120 (3U + 1U free)
         assert checkout_solution.checkout("ZZZS") == 65  # 3V for 130
         assert checkout_solution.checkout("STXS") == 62  # 2V for 90
-
-
-
