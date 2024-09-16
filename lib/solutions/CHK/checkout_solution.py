@@ -31,7 +31,10 @@ def checkout(skus: str) -> int:
     # Free items offer
     free_items = {
         'E': ('B', 2),  # Buy 2E, get 1B free
-        'F': ('F', 3)  # Buy 2F, get 1F free, must have 3F in the basket
+        'F': ('F', 3),  # Buy 2F, get 1F free, must have 3F in the basket
+        'N': ('M', 3),   # Buy 3N, get 1M free
+        'R': ('Q', 3),   # Buy 3R, get 1Q free
+        'U': ('U', 4)    # Buy 4U, pay for 3U (essentially buy 3, get 1 free)
     }
 
     # Dictionary to count the occurences of each SKU
@@ -86,4 +89,5 @@ def checkout(skus: str) -> int:
     
     return total_price
     
+
 

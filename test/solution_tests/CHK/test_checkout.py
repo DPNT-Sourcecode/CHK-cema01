@@ -25,6 +25,14 @@ class TestCheckout():
         assert checkout_solution.checkout("FFFF") == 30
         assert checkout_solution.checkout("FFFFFF") == 40 # 6F for 40
 
+        assert checkout_solution.checkout("HHHHH") == 45  # 5H for 45
+        assert checkout_solution.checkout("HHHHHHHHHH") == 80  # 10H for 80
+        assert checkout_solution.checkout("KK") == 150  # 2K for 150
+        assert checkout_solution.checkout("NNNM") == 120  # 3N for 120, M is free
+        assert checkout_solution.checkout("RRRQ") == 150  # 3R for 150, Q is free
+        assert checkout_solution.checkout("UUUU") == 120  # 4U for 120 (3U + 1U free)
+        assert checkout_solution.checkout("VVV") == 130  # 3V for 130
+        assert checkout_solution.checkout("VV") == 90  # 2V for 90
 
 
 
