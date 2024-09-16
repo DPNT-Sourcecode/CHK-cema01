@@ -13,7 +13,8 @@ def checkout(skus: str) -> int:
         'A': 50,
         'B': 30,
         'C': 20,
-        'D': 15
+        'D': 15,
+        'E': 40
     }
     
     # Special offers
@@ -59,7 +60,3 @@ def checkout(skus: str) -> int:
     
     return total_price
     
-
-
-
-
