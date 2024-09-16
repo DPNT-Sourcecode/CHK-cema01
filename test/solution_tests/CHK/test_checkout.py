@@ -12,4 +12,11 @@ class TestCheckout():
         assert checkout_solution.checkout("a") == -1
         assert checkout_solution.checkout("-") == -1
 
+        assert checkout_solution.checkout("EEBB") == 110
+        assert checkout_solution.checkout("EEB") == 80
+        assert checkout_solution.checkout("EE") == 80
+        assert checkout_solution.checkout("AAAAABEEB") == 295
+        assert checkout_solution.checkout("3A2BEE") == 255  # 3A for 130, 2B for 45, 2E for 80 (B is free)
+
+
 
