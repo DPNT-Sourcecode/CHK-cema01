@@ -31,7 +31,7 @@ def checkout(skus: str) -> int:
 
     # Regex for matching the sigle and multiple quantities (e.g B, or 3A)
     # Assumed all products use capital skus
-    pattern = re.compile(r'(\d+)([A-Z])|([A-Z])')
+    pattern = re.compile(r'(\d+)([A-Za-z])|([A-Za-z])')
 
     #Find all matches
     matches = pattern.findall(skus)
@@ -43,7 +43,7 @@ def checkout(skus: str) -> int:
         else: # number letter cases, like "3B"
             quantity = int(match[0])
             sku = match[1]
-        if sku not in prices:
+        if sku.islower() or sku not in prices:
             return -1
         
         item_count[sku] = item_count.get(sku, 0) + quantity
@@ -60,4 +60,5 @@ def checkout(skus: str) -> int:
     
     return total_price
     
+
 
