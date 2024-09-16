@@ -35,7 +35,7 @@ class TestCheckout():
 
         assert checkout_solution.checkout("STX") == 45  # Group discount applies
         assert checkout_solution.checkout("SSTTXX") == 90  # Two group discounts apply
-        assert checkout_solution.checkout("STXY") == 65  # Group discount applies, plus one item at normal price
+        assert checkout_solution.checkout("STXY") == 62  # Group discount applies, plus one item at normal price
         assert checkout_solution.checkout("SSSTTT") == 90  # Two group discounts apply
         assert checkout_solution.checkout("XYZ") == 45  # Group discount applies
         assert checkout_solution.checkout("SX") == 37  # No group discount, prices are normal
@@ -47,7 +47,7 @@ class TestCheckout():
         assert checkout_solution.checkout("UUUU") == 120  # 4U for 120 (3U + 1U free)
         assert checkout_solution.checkout("VVV") == 130  # 3V for 130
         assert checkout_solution.checkout("VV") == 90  # 2V for 90
-        
+
         assert checkout_solution.checkout("SSSZ") == 65  # 4U for 120 (3U + 1U free)
         assert checkout_solution.checkout("ZZZS") == 65  # 3V for 130
         assert checkout_solution.checkout("STXS") == 62  # 2V for 90
