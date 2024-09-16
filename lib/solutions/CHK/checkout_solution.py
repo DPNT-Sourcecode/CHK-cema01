@@ -20,8 +20,7 @@ def checkout(skus: str) -> int:
     # Special offers
     offers = {
         'A': [(5, 200), (3, 130)],
-        'B': [(2, 45)],
-        'E': [(2, 40)]
+        'B': [(2, 45)]
     }
 
     # Free items offer
@@ -60,9 +59,12 @@ def checkout(skus: str) -> int:
             free_count = item_count[sku] // required_quantity
             item_count[free_sku] = max(0, item_count[free_sku] - free_count)
     
+
+    
     # Calculate total price
     total_price = 0
     for item, count in item_count.items():
+        print(f"item is: {item} and count is: {count}")
         if item in offers:
             # Apply special offers for the item
             item_offers = sorted(offers[item], key=lambda x: -x[0])  # Sort offers by quantity descending
@@ -73,8 +75,11 @@ def checkout(skus: str) -> int:
             total_price += count * prices[item]
         else:
             total_price += count * prices[item]
+
+    print("-------")
     
     return total_price
     
+
 
 
