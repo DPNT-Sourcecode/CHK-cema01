@@ -8,6 +8,10 @@ def checkout(skus: str) -> int:
     by a letter (e.g., A, B, C, etc.), and optionally prefixed by a number indicating the quantity
     of that item. If a number is not specified before a letter, a quantity of one is assumed."""
 
+    # Handle the special case where input is "-"
+    if skus == "-":
+        return 0
+
     # Price tables
     prices = {
         'A': 50,
@@ -27,7 +31,7 @@ def checkout(skus: str) -> int:
 
     # Regex for matching the sigle and multiple quantities (e.g B, or 3A)
     # Assumed all products use capital skus
-    pattern = re.compile(r'(\d+)([A-Za-z])|([A-Za-z])')
+    pattern = re.compile(r'(\d+)([A-Z])|([A-Z])')
 
     #Find all matches
     matches = pattern.findall(skus)
@@ -56,3 +60,4 @@ def checkout(skus: str) -> int:
     
     return total_price
     
+
