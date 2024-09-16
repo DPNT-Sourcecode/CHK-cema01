@@ -59,16 +59,22 @@ def checkout(skus: str) -> int:
         if sku in item_count and free_sku in item_count:
             free_count = item_count[sku] // required_quantity
             item_count[free_sku] = max(0, item_count[free_sku] - free_count)
+    
     # Calculate total price
     total_price = 0
     for item, count in item_count.items():
         if item in offers:
-            offer_quantity, offer_price = offers[item]
-            total_price += (count // offer_quantity) * offer_price
-            total_price += (count % offer_quantity) * prices[item]
+            # Apply special offers for the item
+            item_offers = sorted(offers[item], key=lambda x: -x[0])  # Sort offers by quantity descending
+            for offer_quantity, offer_price in item_offers:
+                if count >= offer_quantity:
+                    total_price += (count // offer_quantity) * offer_price
+                    count %= offer_quantity
+            total_price += count * prices[item]
         else:
             total_price += count * prices[item]
     
     return total_price
     
+
 
