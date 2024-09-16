@@ -1,4 +1,5 @@
 import re
+from collections import defaultdict
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -37,8 +38,15 @@ def checkout(skus: str) -> int:
         'U': ('U', 4)    # Buy 4U, pay for 3U (essentially buy 3, get 1 free)
     }
 
+    # Group discount offer (buy any 3 of S, T, X, Y, Z for 45)
+    group_discount = {
+        'group': ['S', 'T', 'X', 'Y', 'Z'],
+        'count': 3,
+        'price': 45
+    }
+
     # Dictionary to count the occurences of each SKU
-    item_count = {}
+    item_count = defaultdict(int)
 
     # Regex for matching the sigle and multiple quantities (e.g B, or 3A)
     # Assumed all products use capital skus
@@ -89,5 +97,6 @@ def checkout(skus: str) -> int:
     
     return total_price
     
+
 
 
