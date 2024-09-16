@@ -39,11 +39,11 @@ def checkout(skus: str) -> int:
     }
 
     # Group discount offer (buy any 3 of S, T, X, Y, Z for 45)
-    group_discount = (
+    group_discount = {
         'group': ['S', 'T', 'X', 'Y', 'Z'],
         'count': 3,
         'price': 45
-    )
+    }
 
     # Dictionary to count the occurences of each SKU
     item_count = defaultdict(int)
@@ -117,4 +117,5 @@ def checkout(skus: str) -> int:
     
     return total_price
     
+
 
