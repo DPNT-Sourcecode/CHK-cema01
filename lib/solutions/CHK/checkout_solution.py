@@ -1,4 +1,4 @@
-
+import re
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -15,12 +15,20 @@ def checkout(skus: str) -> int:
         'C': 20,
         'D': 15
     }
-
-   # Special offers
+    
+    # Special offers
     offers = {
        'A': (3, 130),
        'B': (2, 45)
     }
+
+    # Dictionary to count the occurences of each SKU
+    item_count = {}
+
+    # Regex for matching the sigle and multiple quantities (e.g B, or 3A)
+    # Assumed all products use capital skus
+    pattern = re.compile(r'(\d+)([A-Z])|([A-Z])')
     
+
 
 
