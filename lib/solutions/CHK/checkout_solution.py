@@ -39,11 +39,11 @@ def checkout(skus: str) -> int:
     }
 
     # Group discount offer (buy any 3 of S, T, X, Y, Z for 45)
-    group_discount = {
+    group_discount = (
         'group': ['S', 'T', 'X', 'Y', 'Z'],
         'count': 3,
         'price': 45
-    }
+    )
 
     # Dictionary to count the occurences of each SKU
     item_count = defaultdict(int)
@@ -70,6 +70,27 @@ def checkout(skus: str) -> int:
         
         item_count[sku] = item_count.get(sku, 0) + quantity
     
+    # Apply group discount offer, prioritizing the cheapest items first
+    group_items = [sku for sku in group_discount['group'] if item_count[sku] > 0]
+    group_items.sort(key=lambda x: prices[x])  # Sort by price ascending
+
+    group_count = sum(item_count[sku] for sku in group_items)
+    total_price = 0
+
+    while group_count >= group_discount['count']:
+        total_price += group_discount['price']
+        group_count -= group_discount['count']
+
+        # Reduce the count of the cheapest items first
+        count_of_items = group_discount['count']
+        for sku in group_items:
+            if item_count[sku] >= count_of_items:
+                item_count[sku] -= count_of_items
+                break
+            else:
+                count_of_items -= item_count[sku]
+                item_count[sku] = 0
+
     # Apply offers that give free items
     for sku, (free_sku, required_quantity) in free_items.items():
         if sku in item_count and free_sku in item_count:
@@ -79,7 +100,6 @@ def checkout(skus: str) -> int:
 
     
     # Calculate total price
-    total_price = 0
     for item, count in item_count.items():
         print(f"item is: {item} and count is: {count}")
         if item in offers:
@@ -97,3 +117,4 @@ def checkout(skus: str) -> int:
     
     return total_price
     
+
