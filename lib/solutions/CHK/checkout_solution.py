@@ -33,19 +33,16 @@ def checkout(skus: str) -> int:
     matches = pattern.findall(skus)
 
     for match in matches:
-        for i in range(len(match)):
-            print(f"match[{i}] is: ", match[i])
         if match[2]: # single letters cases, like "A"
             sku = match[2]
             quantity = 1
         else: # number letter cases, like "3B"
             quantity = int(match[0])
             sku = match[1]
-        print("SKU is:", sku, "quantity is: ", quantity)
         if sku not in prices:
             return -1
         
-        item_count[sku] = item_count.get(sku, default=0) + quantity
+        item_count[sku] = item_count.get(sku, 0) + quantity
     
     # Calculate total price
     total_price = 0
@@ -59,8 +56,3 @@ def checkout(skus: str) -> int:
     
     return total_price
     
-
-
-
-
-
