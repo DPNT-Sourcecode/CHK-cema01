@@ -10,7 +10,8 @@ class TestCheckout():
         assert checkout_solution.checkout("3A1X") == -1
         assert checkout_solution.checkout("3AX") == -1
         assert checkout_solution.checkout("a") == -1
-        assert checkout_solution.checkout("-") == 0
-        
+        assert checkout_solution.checkout("-") == -1
+
+
 
 

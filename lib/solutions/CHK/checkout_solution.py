@@ -33,13 +33,16 @@ def checkout(skus: str) -> int:
     matches = pattern.findall(skus)
 
     for match in matches:
-        if match[2]: # single letters cases, like "A"
+        if match[3]:  #unvalid group
+            return -1
+        elif match[2]: # single letters cases, like "A"
             sku = match[2]
             quantity = 1
         else: # number letter cases, like "3B"
             quantity = int(match[0])
             sku = match[1]
-        if match[3] or sku not in prices:
+        
+        if  sku not in prices:
             return -1
         
         item_count[sku] = item_count.get(sku, 0) + quantity
@@ -56,6 +59,7 @@ def checkout(skus: str) -> int:
     
     return total_price
     
+
 
 
 
