@@ -72,7 +72,7 @@ def checkout(skus: str) -> int:
     
     # Apply group discount offer, prioritizing the cheapest items first
     group_items = [sku for sku in group_discount['group'] if item_count[sku] > 0]
-    group_items.sort(key=lambda x: prices[x])  # Sort by price ascending
+    group_items.sort(key=lambda x: -prices[x])  # Sort by price ascending
 
     group_count = sum(item_count[sku] for sku in group_items)
     total_price = 0
@@ -118,6 +118,7 @@ def checkout(skus: str) -> int:
     
     return total_price
     
+
 
 
 
